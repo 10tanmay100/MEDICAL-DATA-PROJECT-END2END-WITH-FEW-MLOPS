@@ -1,0 +1,16 @@
+pandas
+numpy
+matplotlib
+seaborn
+streamlit
+boto3
+opencv-python
+ultralytics
+flask
+easyocr
+pyYAML
+python-box
+joblib
+dvc
+scikit-learn
+-e .
