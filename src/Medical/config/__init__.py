@@ -1,1 +1,1 @@
-from DarkHorse.config.configuration import ConfigurationManager
+from Medical.config.configuration import ConfigurationManager

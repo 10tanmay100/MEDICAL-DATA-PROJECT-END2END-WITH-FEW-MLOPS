@@ -7,6 +7,7 @@ boto3
 opencv-python
 ultralytics
 flask
+flask-cors
 easyocr
 mypy
 pytest
@@ -19,3 +20,4 @@ joblib
 ipykernel
 dvc
 scikit-learn
+mlflow

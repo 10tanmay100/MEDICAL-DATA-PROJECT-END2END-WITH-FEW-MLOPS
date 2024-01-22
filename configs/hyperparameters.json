@@ -1,0 +1,4 @@
+{
+    "LogisticRegression": {"classifier__penalty":["l1", "l2", "elasticnet"],"classifier__tol":[1e-2,1e-3,1e-4,1e-5],"classifier__C": [0.1, 1, 10],"classifier__solver":["lbfgs","liblinear","newton-cg","newton-cholesky","sag","saga"]},
+    "RandomForestClassifier": {"classifier__criterion":["gini","entropy"],"classifier__n_estimators": [10, 50, 100],"classifier__max_depth":[5,10,15,20,25,30,35,40]}
+}

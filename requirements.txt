@@ -7,10 +7,12 @@ boto3
 opencv-python
 ultralytics
 flask
+flask-cors
 easyocr
 pyYAML
 python-box
 joblib
 dvc
 scikit-learn
+mlflow
 -e .

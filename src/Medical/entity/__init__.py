@@ -1,1 +1,1 @@
-from DarkHorse.entity.config_entity import DataIngestionConfig
+from Medical.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig

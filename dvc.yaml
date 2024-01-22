@@ -1,0 +1,46 @@
+stages:
+  data_ingestion:
+    cmd: python src/Medical/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/Medical/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+      - src/Medical/constants
+    outs:
+      - artifacts/data_ingestion
+
+
+  data_validation:
+    cmd: python src/Medical/pipeline/stage_02_data_validation.py
+    deps:
+      - src/Medical/pipeline/stage_02_data_validation.py
+      - config/config.yaml
+      - src/Medical/constants
+      - artifacts/data_ingestion
+    outs:
+      - artifacts/data_validation
+
+  data_transformation:
+    cmd: python src/Medical/pipeline/stage_03_data_transformation.py
+    deps:
+      - src/Medical/pipeline/stage_03_data_transformation.py
+      - config/config.yaml
+      - src/Medical/constants
+      - artifacts/data_ingestion
+      - artifacts/data_validation
+    outs:
+      - artifacts/data_transformation
+
+  training:
+    cmd: python src/Medical/pipeline/stage_04_model_trainer.py
+    deps:
+      - src/Medical/pipeline/stage_04_model_trainer.py
+      - config/config.yaml
+      - artifacts/data_ingestion/Chest-CT-Scan-data
+      - artifacts/data_ingestion
+      - artifacts/data_validation
+      - artifacts/data_transformation
+    outs:
+      - artifacts/model_trainer/
+      - "model_LogisticRegression.h5"
+      - "model_RandomForestClassifier.h5"
+

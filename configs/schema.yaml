@@ -1,0 +1,17 @@
+columns:
+  - P_incidence: float6464
+  - P_tilt: float6464
+  - L_angle: float64
+  - S_slope: float64
+  - P_radius: float64
+  - S_Degree: float64
+  - Class: object
+
+numerical_columns:
+  - P_incidence
+  - P_tilt
+  - L_angle
+  - S_slope
+  - P_radius
+  - S_Degree
+

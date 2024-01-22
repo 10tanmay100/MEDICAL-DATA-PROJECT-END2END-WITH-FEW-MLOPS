@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <style>
+    body {
+      background: #f2f2f2;
+      font-family: 'Arimo', sans-serif;
+    }
+    .login {
+      width: 360px;
+      padding: 8% 0 0;
+      margin: auto;
+    }
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      position: relative;
+      z-index: 1;
+      background: #FFFFFF;
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    form input, form button {
+      font-family: 'Open Sans Condensed', sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    form button {
+      background: #4CAF50;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    form button:hover,form button:active,form button:focus {
+      background: #43A047;
+    }
+    .upload-section {
+      background: #FFFFFF;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    }
+    .loading {
+      display: none;
+      margin-top: 15px;
+    }
+    .prediction-output {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e7f5e6; /* Light green background */
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: 'Hind', sans-serif;
+      color: #2e7d32; /* Dark green text */
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <h1>Sales Prediction</h1>
+    
+        <form action="{{ url_for('predict')}}" method="post">
+          <input type="number" name="P_incidence" placeholder="P_incidence" required="required" step="any" />
+          <input type="number" name="P_tilt" placeholder="P_tilt" required="required" step="any"/>
+          <input type="number" name="L_angle" placeholder="L_angle" required="required" step="any"/>
+          <input type="number" name="S_slope" placeholder="S_slope" required="required" step="any"/>
+          <input type="number" name="P_radius" placeholder="P_radius" required="required" step="any"/>
+          <input type="number" name="S_Degree" placeholder="S_Degree" required="required" step="any"/>
+          <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        <div class="prediction-output">
+          {{ prediction_text }}
+        </div>
+      
+
+    <div class="upload-section">
+      <h2>Retrain Model</h2>
+      <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Upload and Retrain</button>
+        <div class="loading">Uploading...</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('upload-form').onsubmit = function() {
+      document.querySelector('.loading').style.display = 'block';
+    };
+  </script>
+</body>
+</html>
