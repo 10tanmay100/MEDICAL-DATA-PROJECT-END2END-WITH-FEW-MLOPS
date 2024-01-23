@@ -1,0 +1,68 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/Medical/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: configs/config.yaml
+      md5: 035dbf67403f88919ee4c61b204e2a73
+      size: 469
+    - path: src/Medical/constants
+      md5: 3d2def128b0035256bc4e95a9438450f.dir
+      size: 852
+      nfiles: 2
+    - path: src/Medical/pipeline/stage_01_data_ingestion.py
+      md5: 2ed545348eb0c2196130009265e6eff1
+      size: 671
+    outs:
+    - path: artifacts/data_ingestion
+      md5: 84feeee5eae51fd0d46ba890245babdc.dir
+      size: 48684
+      nfiles: 5
+  data_validation:
+    cmd: python src/Medical/pipeline/stage_02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion
+      md5: 9d25224377f19f39d2417bdac845d797.dir
+      size: 81136
+      nfiles: 9
+    - path: configs/config.yaml
+      md5: 035dbf67403f88919ee4c61b204e2a73
+      size: 469
+    - path: src/Medical/constants
+      md5: 3d2def128b0035256bc4e95a9438450f.dir
+      size: 852
+      nfiles: 2
+    - path: src/Medical/pipeline/stage_02_data_validation.py
+      md5: e4d627b868a97e19658d3b60b48df1c1
+      size: 1330
+    outs:
+    - path: artifacts/data_validation
+      md5: 70a7c95af07cbf6d460e862764ebde31.dir
+      size: 33352
+      nfiles: 4
+  data_transformation:
+    cmd: python src/Medical/pipeline/stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_ingestion
+      md5: 7cc283eda71561150f99204bbd20e551.dir
+      size: 113588
+      nfiles: 13
+    - path: artifacts/data_validation
+      md5: 072f03b5a5a5ddb36834a7f0fea8d25e.dir
+      size: 66704
+      nfiles: 8
+    - path: configs/config.yaml
+      md5: 035dbf67403f88919ee4c61b204e2a73
+      size: 469
+    - path: src/Medical/constants
+      md5: 3d2def128b0035256bc4e95a9438450f.dir
+      size: 852
+      nfiles: 2
+    - path: src/Medical/pipeline/stage_03_data_transformation.py
+      md5: 0dcb76bbf0a56797fe7d8c2d6dfd1f48
+      size: 1382
+    outs:
+    - path: artifacts/data_transformation
+      md5: 42ec03490b3c9de68980e389423a6124.dir
+      size: 50509
+      nfiles: 3

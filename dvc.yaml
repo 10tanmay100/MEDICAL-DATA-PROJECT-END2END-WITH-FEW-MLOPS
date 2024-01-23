@@ -3,7 +3,7 @@ stages:
     cmd: python src/Medical/pipeline/stage_01_data_ingestion.py
     deps:
       - src/Medical/pipeline/stage_01_data_ingestion.py
-      - config/config.yaml
+      - configs/config.yaml
       - src/Medical/constants
     outs:
       - artifacts/data_ingestion
@@ -13,7 +13,7 @@ stages:
     cmd: python src/Medical/pipeline/stage_02_data_validation.py
     deps:
       - src/Medical/pipeline/stage_02_data_validation.py
-      - config/config.yaml
+      - configs/config.yaml
       - src/Medical/constants
       - artifacts/data_ingestion
     outs:
@@ -23,7 +23,7 @@ stages:
     cmd: python src/Medical/pipeline/stage_03_data_transformation.py
     deps:
       - src/Medical/pipeline/stage_03_data_transformation.py
-      - config/config.yaml
+      - configs/config.yaml
       - src/Medical/constants
       - artifacts/data_ingestion
       - artifacts/data_validation
@@ -34,8 +34,7 @@ stages:
     cmd: python src/Medical/pipeline/stage_04_model_trainer.py
     deps:
       - src/Medical/pipeline/stage_04_model_trainer.py
-      - config/config.yaml
-      - artifacts/data_ingestion/Chest-CT-Scan-data
+      - configs/config.yaml
       - artifacts/data_ingestion
       - artifacts/data_validation
       - artifacts/data_transformation

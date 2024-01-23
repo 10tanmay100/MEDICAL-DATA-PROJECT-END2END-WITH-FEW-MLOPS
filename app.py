@@ -3,8 +3,7 @@ import joblib
 import boto3
 from Medical.utils import read_yaml
 from Medical.constants import CONFIG_FILE_PATH
-
-
+from Medical.pipeline import RetrainPipeline
 from Medical.components import DataIngestion,DataValidation,DataTransformation,ModelTrainer
 from Medical.config import ConfigurationManager
 from Medical.logger import logging 
@@ -37,7 +36,7 @@ app = Flask(__name__)
 model = joblib.load("model_LogisticRegression.h5")
 
 cfg=read_yaml(CONFIG_FILE_PATH)
-
+retrain=RetrainPipeline()
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -66,7 +65,7 @@ def upload_file():
         # Upload file to S3
         s3 = boto3.client('s3')
         s3.upload_fileobj(file, cfg.data_ingestion.S3_bucket_name, 'data/' + file.filename)
-        main()
+        retrain.main()
         # Trigger retraining here if necessary
         return render_template('index1.html')
 

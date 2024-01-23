@@ -11,4 +11,4 @@ HYP_JSON_PATH='configs/hyperparameters.json'
 MODEL_NAME="model.h5"
 
 
-TRACKING_URI="http://3.110.224.40:5000/"
+TRACKING_URI="http://3.110.101.43:5000/"

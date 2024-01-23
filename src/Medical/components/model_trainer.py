@@ -81,13 +81,13 @@ class ModelTrainer:
 
                     predictions = clf.predict(X_test)
                     logging.info("Predicting..")
-                    precision_score=precision_score(y_test,predictions)
-                    recall_score=recall_score(y_test,predictions)
-                    f1_score=f1_score(y_test,predictions)
+                    precision=precision_score(y_test,predictions,average="micro")
+                    recall=recall_score(y_test,predictions,average="micro")
+                    f1=f1_score(y_test,predictions,average="micro")
 
-                    mlflow.log_metric("Precision Score",precision_score)
-                    mlflow.log_metric("Recall Score",recall_score)
-                    mlflow.log_metric("F1 Score",f1_score)
+                    mlflow.log_metric("Precision Score",precision)
+                    mlflow.log_metric("Recall Score",recall)
+                    mlflow.log_metric("F1 Score",f1)
 
                     signature = infer_signature(X_train, predictions)
                     input_example = {

@@ -12,8 +12,7 @@ def main():
     config=ConfigurationManager()
     data_ingestion_config=config.get_data_ingestion_config()
     data_ingestion=DataIngestion(config=data_ingestion_config)
-    data_ingestion.download_file()
-    data_ingestion.unzip_clean_data()
+    data_ingestion.ingest_data()
     data_validation_config=config.get_data_validation_config()
     data_validation=DataValidation(ingest_config=data_ingestion_config,valid_config=data_validation_config)
     # for csvs in os.listdir(data_ingestion_config.raw_file_path):
