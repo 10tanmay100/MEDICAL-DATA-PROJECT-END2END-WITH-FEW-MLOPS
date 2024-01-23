@@ -12,8 +12,8 @@ easyocr
 mypy
 pytest
 flake8
-tox==4.12.1
-awscli==1.32.25
+tox
+awscli
 black
 pyYAML
 python-box
