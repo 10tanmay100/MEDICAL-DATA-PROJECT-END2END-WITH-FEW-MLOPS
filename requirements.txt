@@ -9,9 +9,16 @@ ultralytics
 flask
 flask-cors
 easyocr
+mypy
+pytest
+flake8
+tox
+awscli
+black
 pyYAML
 python-box
 joblib
+ipykernel
 dvc
 scikit-learn
 mlflow
