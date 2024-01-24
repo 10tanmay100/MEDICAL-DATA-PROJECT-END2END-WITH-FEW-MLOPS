@@ -43,4 +43,5 @@ class DataValidation:
                 data_path=os.path.join(self.config.validated_path,csvs)
                 read_data(csv_path).to_csv(data_path)
 
+
                 
