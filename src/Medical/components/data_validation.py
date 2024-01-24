@@ -42,5 +42,5 @@ class DataValidation:
             if self.validate_number_of_columns(dataframe):
                 data_path=os.path.join(self.config.validated_path,csvs)
                 read_data(csv_path).to_csv(data_path)
-                print("Reading..Done")
+
                 
