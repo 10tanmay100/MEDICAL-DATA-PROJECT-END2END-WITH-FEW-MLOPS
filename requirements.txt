@@ -13,7 +13,7 @@ mypy
 pytest
 flake8
 tox
-awscli
+awscli==1.32.25
 black
 pyYAML
 python-box
