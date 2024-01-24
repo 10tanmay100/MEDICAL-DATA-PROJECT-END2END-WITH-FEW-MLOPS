@@ -19,7 +19,7 @@ app = Flask(__name__)
 model = joblib.load("model_LogisticRegression.h5")
 
 cfg=read_yaml(CONFIG_FILE_PATH)
-retrain=RetrainPipeline()
+
 @app.route('/')
 def index():
     return render_template('index.html')
