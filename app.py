@@ -54,22 +54,8 @@ def predict():
         type_="Type_S"
     else:
         return "pass"
-    return render_template('index1.html',prediction_text=type_)
+    return render_template('index.html',prediction_text=type_)
 
-@app.route('/upload', methods=['GET','POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return redirect(request.url)
-    file = request.files['file']
-    if file.filename == '':
-        return redirect(request.url)
-    if file:
-        # Upload file to S3
-        s3 = boto3.client('s3')
-        s3.upload_fileobj(file, cfg.data_ingestion.S3_bucket_name, 'data/' + file.filename)
-        RetrainPipeline.main()
-        # Trigger retraining here if necessary
-        return render_template('index1.html')
 
 if __name__ == '__main__':
     app.run(debug=True,host="0.0.0.0", port=5000)
